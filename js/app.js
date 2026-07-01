@@ -13,6 +13,9 @@ const ui = {
   htmlFile: document.getElementById("html-file"),
   cssFile: document.getElementById("css-file"),
   jsFile: document.getElementById("js-file"),
+
+  consoleOutput: document.getElementById("console-output"),
+  clearConsoleButton: document.getElementById("clear-console"),
 };
 
 // ===========================
@@ -52,6 +55,10 @@ window.addEventListener("message", (event) => {
   consoleOutput.appendChild(line);
 
   consoleOutput.scrollTop = consoleOutput.scrollHeight;
+});
+
+ui.clearConsoleButton.addEventListener("click", () => {
+  ui.consoleOutput.innerHTML = "";
 });
 
 // ===========================
