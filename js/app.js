@@ -1,87 +1,43 @@
 // ===========================
-// Get Elements
+// UI Elements
 // ===========================
 
-const htmlEditor = document.getElementById("html-editor");
-const cssEditor = document.getElementById("css-editor");
-const jsEditor = document.getElementById("js-editor");
-const preview = document.getElementById("preview");
+const ui = {
+  editor: document.getElementById("editor"),
+  preview: document.getElementById("preview"),
+  currentFile: document.getElementById("current-file"),
+
+  languageStatus: document.getElementById("language-status"),
+  saveStatus: document.getElementById("save-status"),
+
+  htmlFile: document.getElementById("html-file"),
+  cssFile: document.getElementById("css-file"),
+  jsFile: document.getElementById("js-file"),
+};
 
 // ===========================
-// Update Preview
+// Events
 // ===========================
 
-function updatePreview() {
-  preview.srcdoc = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-
-<style>
-${cssEditor.value}
-</style>
-
-</head>
-
-<body>
-
-${htmlEditor.value}
-
-<script>
-${jsEditor.value}
-<\/script>
-
-</body>
-
-</html>
-`;
-
-  saveProject();
-}
-
-// ===========================
-// Save Project
-// ===========================
-
-function saveProject() {
-  const project = {
-    html: htmlEditor.value,
-    css: cssEditor.value,
-    js: jsEditor.value,
-  };
-
-  localStorage.setItem("devforge-project", JSON.stringify(project));
-}
-
-// ===========================
-// Load Project
-// ===========================
-
-function loadProject() {
-  const savedProject = localStorage.getItem("devforge-project");
-
-  if (!savedProject) {
-    updatePreview();
-    return;
-  }
-
-  const project = JSON.parse(savedProject);
-
-  htmlEditor.value = project.html;
-  cssEditor.value = project.css;
-  jsEditor.value = project.js;
-
+ui.editor.addEventListener("input", () => {
+  saveCurrentFile();
   updatePreview();
-}
+});
 
-// ===========================
-// Event Listeners
-// ===========================
+ui.htmlFile.addEventListener("click", () => {
+  saveCurrentFile();
+  openFile("html");
+});
 
-htmlEditor.addEventListener("input", updatePreview);
-cssEditor.addEventListener("input", updatePreview);
-jsEditor.addEventListener("input", updatePreview);
+ui.cssFile.addEventListener("click", () => {
+  saveCurrentFile();
+  openFile("css");
+});
+
+ui.jsFile.addEventListener("click", () => {
+  saveCurrentFile();
+  openFile("js");
+});
 
 // ===========================
 // Start Application

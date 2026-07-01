@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="css/layout.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/layout.css" />
     <title>DevForge</title>
   </head>
+
   <body>
     <header>
       <h1>DevForge</h1>
@@ -18,21 +19,48 @@
     </header>
 
     <main>
-      <aside>Explorer</aside>
+      <!-- Explorer -->
+      <aside>
+        <h2>Explorer</h2>
+
+        <ul>
+          <li id="html-file">📄 index.html</li>
+          <li id="css-file">📄 style.css</li>
+          <li id="js-file">📄 script.js</li>
+        </ul>
+      </aside>
+
+      <!-- Editor -->
       <section>
-        <h2>Editors</h2>
-        <h2>HTML</h2>
-        <textarea id="html-editor"></textarea>
-        <h2>CSS</h2>
-        <textarea id="css-editor"></textarea>
-        <h2>JavaScript</h2>
-        <textarea id="js-editor"></textarea>
+        <h2 id="current-file">index.html</h2>
+
+        <textarea id="editor"></textarea>
       </section>
+
+      <!-- Preview -->
       <section>
         <h2>Preview</h2>
+
         <iframe id="preview"></iframe>
       </section>
     </main>
+    <footer id="status-bar">
+      <div class="status-left">
+        <span id="language-status">HTML</span>
+        <span id="save-status">Saved ✓</span>
+      </div>
+
+      <div class="status-right">
+        <span>UTF-8</span>
+        <span>DevForge v0.4</span>
+      </div>
+    </footer>
+
+    <script src="js/state.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/preview.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/explorer.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
