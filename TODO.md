@@ -2,7 +2,11 @@
 
 ## High Priority
 
-- [ ] Console Panel
+- [x] Console panel
+- [x] console.log()
+- [x] console.warn()
+- [x] console.error()
+- [x] Clear Console
 - [ ] Error Panel
 - [ ] Monaco Editor
 - [ ] Download Project

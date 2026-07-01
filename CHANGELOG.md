@@ -1,6 +1,24 @@
 # DevForge Changelog
 
-All notable changes to DevForge will be documented in this file.
+## All notable changes to DevForge will be documented in this file.
+
+## v0.5 - Integrated Console
+
+### Added
+
+- Console panel
+- Console output capture using `postMessage`
+- Support for `console.log()`
+- Support for `console.warn()`
+- Support for `console.error()`
+- Clear Console button
+- Auto-scrolling console
+
+### Improved
+
+- Pretty-print objects and arrays
+- Multi-line formatting for structured data
+- Color-coded log levels
 
 ---
 
