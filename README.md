@@ -164,12 +164,6 @@ If you find a bug or have an idea for a feature, feel free to open an issue.
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License.
-
----
-
 ## 👨‍💻 Author
 
 **Prabhat**
