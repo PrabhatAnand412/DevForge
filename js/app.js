@@ -46,15 +46,29 @@ ui.jsFile.addEventListener("click", () => {
 window.addEventListener("message", (event) => {
   if (event.data.type !== "console-log") return;
 
-  const consoleOutput = document.getElementById("console-output");
-
   const line = document.createElement("div");
 
-  line.textContent = event.data.data.join(" ");
+  event.data.data.forEach((item) => {
+    if (typeof item === "object" && item !== null) {
+      const pre = document.createElement("pre");
 
-  consoleOutput.appendChild(line);
+      pre.textContent = JSON.stringify(item, null, 2);
 
-  consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      line.appendChild(pre);
+    } else {
+      const span = document.createElement("span");
+
+      span.textContent = item + " ";
+
+      line.appendChild(span);
+    }
+  });
+  // Add class based on log type
+  line.classList.add(`console-${event.data.level}`);
+
+  ui.consoleOutput.appendChild(line);
+
+  ui.consoleOutput.scrollTop = ui.consoleOutput.scrollHeight;
 });
 
 ui.clearConsoleButton.addEventListener("click", () => {

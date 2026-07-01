@@ -236,3 +236,23 @@ iframe {
   color: #888;
   font-style: italic;
 }
+/* ===========================
+   Console Message Types
+=========================== */
+
+.console-log {
+  color: #d4d4d4;
+}
+
+.console-warn {
+  color: #f7d038;
+}
+
+.console-error {
+  color: #ff6b6b;
+}
+#console-output pre {
+  margin: 4px 0;
+  white-space: pre-wrap;
+  font-family: Consolas, monospace;
+}
