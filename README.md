@@ -2,9 +2,8 @@
 
 > A lightweight browser-based code editor inspired by VS Code, built from scratch using HTML, CSS, and JavaScript.
 
-![Version](https://img.shields.io/badge/version-v0.4-blue)
+![Version](https://img.shields.io/badge/version-v0.5-blue)
 ![Status](https://img.shields.io/badge/status-In%20Development-orange)
-![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
 
