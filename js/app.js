@@ -38,6 +38,21 @@ ui.jsFile.addEventListener("click", () => {
   saveCurrentFile();
   openFile("js");
 });
+// ===========================
+
+window.addEventListener("message", (event) => {
+  if (event.data.type !== "console-log") return;
+
+  const consoleOutput = document.getElementById("console-output");
+
+  const line = document.createElement("div");
+
+  line.textContent = event.data.data.join(" ");
+
+  consoleOutput.appendChild(line);
+
+  consoleOutput.scrollTop = consoleOutput.scrollHeight;
+});
 
 // ===========================
 // Start Application
