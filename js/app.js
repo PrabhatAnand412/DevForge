@@ -41,39 +41,6 @@ ui.jsFile.addEventListener("click", () => {
   saveCurrentFile();
   openFile("js");
 });
-// ===========================
-
-window.addEventListener("message", (event) => {
-  if (event.data.type !== "console-log") return;
-
-  const line = document.createElement("div");
-
-  event.data.data.forEach((item) => {
-    if (typeof item === "object" && item !== null) {
-      const pre = document.createElement("pre");
-
-      pre.textContent = JSON.stringify(item, null, 2);
-
-      line.appendChild(pre);
-    } else {
-      const span = document.createElement("span");
-
-      span.textContent = item + " ";
-
-      line.appendChild(span);
-    }
-  });
-  // Add class based on log type
-  line.classList.add(`console-${event.data.level}`);
-
-  ui.consoleOutput.appendChild(line);
-
-  ui.consoleOutput.scrollTop = ui.consoleOutput.scrollHeight;
-});
-
-ui.clearConsoleButton.addEventListener("click", () => {
-  ui.consoleOutput.innerHTML = "";
-});
 
 // ===========================
 // Start Application

@@ -13,46 +13,50 @@ ${project.html}
 
 <script>
 
-// Keep browser console working
+// ===========================
+// Console Bridge
+// ===========================
+
+function sendToParent(level, args) {
+  window.parent.postMessage(
+    {
+      type: "console-log",
+      level,
+      data: args,
+    },
+    "*"
+  );
+}
+
 const originalLog = console.log;
 const originalWarn = console.warn;
 const originalError = console.error;
 
-// Replace console.log
-console.log = function (...args) {
-    originalLog(...args);
-
-    window.parent.postMessage({
-        type: "console-log",
-        level: "log",
-        data: args
-    }, "*");
+console.log = (...args) => {
+  originalLog(...args);
+  sendToParent("log", args);
 };
 
-// Replace console.warn
-console.warn = function (...args) {
-    originalWarn(...args);
-
-    window.parent.postMessage({
-        type: "console-log",
-        level: "warn",
-        data: args
-    }, "*");
+console.warn = (...args) => {
+  originalWarn(...args);
+  sendToParent("warn", args);
 };
 
-// Replace console.error
-console.error = function (...args) {
-    originalError(...args);
-
-    window.parent.postMessage({
-        type: "console-log",
-        level: "error",
-        data: args
-    }, "*");
+console.error = (...args) => {
+  originalError(...args);
+  sendToParent("error", args);
 };
 
-// User code
+
+// ===========================
+// User Code
+// ===========================
+
+try {
 ${project.js}
+} catch (error) {
+  console.error(error.stack || error.message || String(error));
+}
 
 <\/script>
 
